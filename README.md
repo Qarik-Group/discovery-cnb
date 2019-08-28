@@ -29,7 +29,7 @@ A metadata file is created from the buildpacks detected and used to create the a
 ```plain
 $ cat /layers/config/metadata.toml
 processes = []
-buildpacks = ["com.examples.buildpacks.discovery"]
+buildpacks = ["com.starkandwayne.buildpacks.discovery"]
 
 [[processes]]
   type = "web"
@@ -45,20 +45,20 @@ The layers added by the buildpacks are at `/layers`:
 
 ```plain
 $ ls -alR /layers/com*/
-/layers/com.examples.buildpacks.discovery/:
+/layers/com.starkandwayne.buildpacks.discovery/:
 total 12
 drwxr-xr-x 3 vcap vcap 4096 Jan  1  1980 .
 drwxr-xr-x 1 vcap vcap 4096 Jan  1  1980 ..
 drwxr-xr-x 2 vcap vcap 4096 Jan  1  1980 discovery-launch-true
 
-/layers/com.examples.buildpacks.discovery/discovery-launch-true:
+/layers/com.starkandwayne.buildpacks.discovery/discovery-launch-true:
 total 12
 drwxr-xr-x 3 vcap vcap 4096 Jan  1  1980 .
 drwxr-xr-x 3 vcap vcap 4096 Jan  1  1980 ..
 drwxr-xr-x 2 vcap vcap 4096 Jan  1  1980 bin
 -rw-r--r-- 1 vcap vcap    0 Jan  1  1980 some-file
 
-/layers/com.examples.buildpacks.discovery/discovery-launch-true/bin:
+/layers/com.starkandwayne.buildpacks.discovery/discovery-launch-true/bin:
 total 16
 drwxr-xr-x 2 vcap vcap 4096 Jan  1  1980 .
 drwxr-xr-x 3 vcap vcap 4096 Jan  1  1980 ..
@@ -73,7 +73,7 @@ $ hello
 hello world
 
 $ echo $PATH
-/layers/com.examples.buildpacks.discovery/discovery-launch-true/bin:...
+/layers/com.starkandwayne.buildpacks.discovery/discovery-launch-true/bin:...
 ```
 
 Run the tiny `nc`-based web app explicitly:

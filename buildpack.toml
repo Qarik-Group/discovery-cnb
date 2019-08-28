@@ -1,6 +1,6 @@
 # Buildpack ID and metadata
 [buildpack]
-id = "com.examples.buildpacks.discovery"
+id = "com.starkandwayne.buildpacks.discovery"
 version = "0.0.1"
 name = "Discovery Buildpack"
 
