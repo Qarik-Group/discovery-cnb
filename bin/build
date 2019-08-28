@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+set -eo pipefail
+
+# https://github.com/buildpack/spec/blob/master/buildpack.md#build
+
+echo "---> Discovery Buildpack"
+
+layers=$1
+echo "\$1 layers: $layers"
+ls -alR $layers
+
+echo
+echo "\$2 platform: $2"
+ls -alR $2
+
+echo
+plan=$3
+echo "\$3 plan: $plan"
+ls -alR $plan
+cat $plan
+
+echo
+echo "STDIN:"
+echo "$(</dev/stdin)"
+
+echo "---> Make some layers"
+cat > $layers/discovery-launch-true.toml <<TOML
+launch = true
+TOML
+mkdir -p $layers/discovery-launch-true/bin
+touch $layers/discovery-launch-true/some-file
+cat > $layers/discovery-launch-true/bin/hello <<SHELL
+#!/bin/bash
+
+echo "hello world"
+SHELL
+chmod +x $layers/discovery-launch-true/bin/hello
+
+# following layers will not appear in final docker image
+mkdir $layers/discovery-launch-false
+touch $layers/discovery-launch-false/some-file
+cat > $layers/discovery-launch-false.toml <<TOML
+launch = false
+TOML
+
+mkdir $layers/discovery-dir-only
+
+cat > $layers/discovery-toml-only.toml <<TOML
+TOML
+
+exit 0

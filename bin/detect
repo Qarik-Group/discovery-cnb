@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+set -eo pipefail
+
+# https://github.com/buildpack/spec/blob/master/buildpack.md#detection
+
+echo "\$1 platform: $1"
+ls -alR $1/
+
+echo ""
+plan=$2
+echo "\$2 plan: $plan"
+# cat > $plan <<TOML
+# discovery = "hello world"
+# some_version = "1.2.3"
+# TOML
+echo "discovery = { message = \"hello\", version = \"1.2.3\" }" > "$plan"
+ls -al $plan
+
+# always succeed, so that bin/build is also run
+exit 0
