@@ -1,0 +1,13 @@
+[[buildpacks]]
+  id = "com.starkandwayne.buildpacks.discovery"
+  uri = "."
+
+[[groups]]
+  [[groups.buildpacks]]
+    id = "com.starkandwayne.buildpacks.discovery"
+    version = "0.0.1"
+
+[stack]
+  id = "org.cloudfoundry.stacks.cflinuxfs3"
+  build-image = "cloudfoundry/cnb-build:cflinuxfs3"
+  run-image = "cloudfoundry/cnb-run:cflinuxfs3"
