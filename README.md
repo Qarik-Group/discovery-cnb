@@ -31,6 +31,10 @@ $ cat /layers/config/metadata.toml
 processes = []
 buildpacks = ["com.examples.buildpacks.discovery"]
 
+[[processes]]
+  type = "web"
+  command = "nc-webapp"
+
 [bom]
   [bom.discovery]
     message = "hello"
@@ -55,13 +59,14 @@ drwxr-xr-x 2 vcap vcap 4096 Jan  1  1980 bin
 -rw-r--r-- 1 vcap vcap    0 Jan  1  1980 some-file
 
 /layers/com.examples.buildpacks.discovery/discovery-launch-true/bin:
-total 12
+total 16
 drwxr-xr-x 2 vcap vcap 4096 Jan  1  1980 .
 drwxr-xr-x 3 vcap vcap 4096 Jan  1  1980 ..
 -rwxr-xr-x 1 vcap vcap   32 Jan  1  1980 hello
+-rwxr-xr-x 1 vcap vcap   27 Jan  1  1980 nc-webapp
 ```
 
-The `hello` executable is automatically added into the `$PATH`:
+The `hello` and `nc-webapp` executables are automatically added into the `$PATH`:
 
 ```plain
 $ hello
@@ -69,4 +74,18 @@ hello world
 
 $ echo $PATH
 /layers/com.examples.buildpacks.discovery/discovery-launch-true/bin:...
+```
+
+Run the tiny `nc`-based web app explicitly:
+
+```plain
+$ docker run -ti -p 8080:8080 --env PORT=8080 discovery-app nc-webapp
+Listening on [0.0.0.0] (family 0, port 8080)
+```
+
+But the `nc-webapp` is also described by `bin/build` as a launch process, so it is automatically run as the default behavior of the Docker image:
+
+```plain
+$ docker run -ti -p 8080:8080 --env PORT=8080 discovery-app
+Listening on [0.0.0.0] (family 0, port 8080)
 ```

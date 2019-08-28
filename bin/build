@@ -29,12 +29,22 @@ launch = true
 TOML
 mkdir -p $layers/discovery-launch-true/bin
 touch $layers/discovery-launch-true/some-file
+echo "---> create bin/hello"
 cat > $layers/discovery-launch-true/bin/hello <<SHELL
 #!/bin/bash
 
 echo "hello world"
 SHELL
 chmod +x $layers/discovery-launch-true/bin/hello
+
+echo "---> create tiny webapp with nc"
+cat > $layers/discovery-launch-true/bin/nc-webapp <<SHELL
+#!/bin/bash
+
+nc -nvlp ${PORT:-8080}
+SHELL
+chmod +x $layers/discovery-launch-true/bin/nc-webapp
+echo 'processes = [{ type = "web", command = "nc-webapp"}]' > $layers/launch.toml
 
 # following layers will not appear in final docker image
 mkdir $layers/discovery-launch-false
