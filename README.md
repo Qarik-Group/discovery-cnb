@@ -5,6 +5,8 @@ Buildpack that prints out arguments being passed between `bin/detect`, `bin/buil
 * https://buildpacks.io/docs/create-buildpack/building-blocks-cnb/
 * https://github.com/buildpack/spec/blob/master/buildpack.md
 
+**NOTE:** This buildpack was created with `pack 0.3.0` during August 2019. If the outputs or behavior changes, please let me know and I'll update the README or buildpack scripts.
+
 ```plain
 pack build discovery-app --buildpack . --path fixtures/ruby-sample-app
 ```
