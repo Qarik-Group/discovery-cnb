@@ -1,0 +1,12 @@
+apiVersion: build.pivotal.io/v1alpha1
+kind: Image
+metadata:
+  name: discovery-cnb-fixture-app
+spec:
+  tag: starkandwayne/discovery-cnb-fixture-app
+  builderRef: discovery-builder
+  serviceAccount: service-account
+  source:
+    git:
+      url: https://github.com/starkandwayne/discovery-cnb.git
+      revision: master

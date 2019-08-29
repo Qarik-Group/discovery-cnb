@@ -1,0 +1,9 @@
+---
+apiVersion: build.pivotal.io/v1alpha1
+kind: Builder
+metadata:
+  name: discovery-builder
+spec:
+  image: starkandwayne/discovery-builder:latest
+  updatePolicy: polling
+

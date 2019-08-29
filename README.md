@@ -192,3 +192,25 @@ Executing lifecycle version 0.3.0
 ===> CACHING
 Successfully built image discovery-app
 ```
+
+## kpack
+
+To install the `discovery-builder` builder into kpack, that contains this buildpack, use:
+
+```plain
+kubectl apply -f kpack-builder.yml
+```
+
+To apply the buildpack, via the builder, to an example project (this repo) apply the sample file. First update it for your own `spec.tag` and `spec.serviceAccount`.
+
+```plain
+kubectl apply -f kpack-fixture-app-build-from-git.yml
+```
+
+It will take a while for the first build to kick off, as Kubernetes needs to download the new `starkandwayne/discover-builder` image from Docker Hub registry.
+
+To watch the buildpack lifecycle use kpack's `logs` CLI:
+
+```plain
+logs -image discovery-cnb-fixture-app
+```
