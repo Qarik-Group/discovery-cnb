@@ -220,3 +220,5 @@ Run the published image locally:
 ```plain
 docker run -ti -p 8080:8080 --env PORT=8080 starkandwayne/discovery-cnb-fixture-app
 ```
+
+Subsequent changes to this Git repo should automatically trigger kpack to rebuild the Docker image.
