@@ -2,8 +2,8 @@
   id = "com.starkandwayne.buildpacks.discovery"
   uri = "."
 
-[[groups]]
-  [[groups.buildpacks]]
+[[order]]
+  [[order.buildpacks]]
     id = "com.starkandwayne.buildpacks.discovery"
     version = "0.0.1"
 

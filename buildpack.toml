@@ -1,3 +1,6 @@
+# Buildpack API version
+api = "0.2"
+
 # Buildpack ID and metadata
 [buildpack]
 id = "com.starkandwayne.buildpacks.discovery"
