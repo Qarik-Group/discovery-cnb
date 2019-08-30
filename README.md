@@ -173,11 +173,14 @@ Executing lifecycle version 0.3.0
 [builder]
 [builder] $3 plan: /tmp/plan.833650968/com.starkandwayne.buildpacks.discovery/plan.toml
 [builder] -rwxr-xr-x 1 vcap vcap 0 Aug 28 23:13 /tmp/plan.833650968/com.starkandwayne.buildpacks.discovery/plan.toml
+[builder] [[entries]]
+[builder]   name = "discovery"
+[builder]   version = "1.2.3"
+[builder]   [entries.metadata]
+[builder]     message = "hello"
 [builder]
 [builder] STDIN:
-[builder] [discovery]
-[builder]   message = "hello"
-[builder]   version = "1.2.3"
+[builder]
 [builder] ---> Make some layers
 [builder] ---> create bin/hello
 [builder] ---> create tiny webapp with nc

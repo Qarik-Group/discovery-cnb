@@ -9,11 +9,18 @@ ls -alR $1/
 echo ""
 plan=$2
 echo "\$2 plan: $plan"
-# cat > $plan <<TOML
-# discovery = "hello world"
-# some_version = "1.2.3"
-# TOML
-echo "discovery = { message = \"hello\", version = \"1.2.3\" }" > "$plan"
+cat > "$plan" <<TOML
+[[provides]]
+name = "discovery"
+
+[[requires]]
+name = "discovery"
+version = "1.2.3"
+
+[requires.metadata]
+message = "hello"
+TOML
+
 ls -al $plan
 
 # always succeed, so that bin/build is also run
