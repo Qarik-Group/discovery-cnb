@@ -1,11 +1,14 @@
+[lifecycle]
+  version = "0.4.0"
+
 [[buildpacks]]
   id = "com.starkandwayne.buildpacks.discovery"
   uri = "."
 
 [[order]]
-  [[order.buildpacks]]
-    id = "com.starkandwayne.buildpacks.discovery"
-    version = "0.0.1"
+[[order.group]]
+  id = "com.starkandwayne.buildpacks.discovery"
+  optional = true
 
 [stack]
   id = "org.cloudfoundry.stacks.cflinuxfs3"

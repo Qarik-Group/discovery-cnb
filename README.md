@@ -5,7 +5,9 @@ Buildpack that prints out arguments being passed between `bin/detect`, `bin/buil
 * https://buildpacks.io/docs/create-buildpack/building-blocks-cnb/
 * https://github.com/buildpack/spec/blob/master/buildpack.md
 
-**NOTE:** This buildpack was created with `pack 0.3.0` during August 2019. If the outputs or behavior changes, please let me know and I'll update the README or buildpack scripts.
+**NOTE:** This buildpack was created with `pack` from source, just prior to v0.4.0 release during August 2019. If the outputs or behavior changes, please let me know and I'll update the README or buildpack scripts.
+
+**NOTE:** The `builder.toml` explicitly uses [`lifecycle` 0.4.0](https://github.com/buildpack/lifecycle/releases/tag/v0.4.0) (`pack` 0.3.0 defaults to `lifecycle` 0.3.0)
 
 ## Playtime with buildpack
 
